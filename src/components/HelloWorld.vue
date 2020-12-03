@@ -16,8 +16,18 @@
         <input class="m-input" type="text" placeholder="Your Message Here"/>
       </div>
     </div>
-    <h3>Essential Links</h3>
-    <ul>
+    <h2>Personalisation</h2>
+    <div class="e-float-input e-input-group">
+            <input type="text" required/>
+            <span class="e-float-line"></span>
+            <label class="e-float-text"> Enter Personalised Values (as a comma separated list) Example: Name, Number </label>
+        </div>
+    <h2>Enable Service</h2>
+    <input type="checkbox" id="sms" value="SMS Saver" v-model="checkedNames">
+    <label for="sms">SMS Saver</label>
+    <input type="checkbox" id="url" value="URL Shortening" v-model="checkedNames">
+    <label for="url">URL Shortening</label>
+    <!-- <ul>
       <li>
         <a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a>
       </li>
@@ -71,7 +81,7 @@
           >awesome-vue</a
         >
       </li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
