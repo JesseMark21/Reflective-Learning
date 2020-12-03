@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="https://vuejs.org/images/logo.png" />
+    <img alt="Vue logo" src="https://grapevinegroup.co.za/wp-content/themes/grapevine/assets/img/grapevine-logo.png" />
     <HelloWorld msg="Create a Broadcast Message" />
   </div>
 </template>
