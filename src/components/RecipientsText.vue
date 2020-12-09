@@ -2,14 +2,16 @@
 	<h2> Recipients </h2>
 	<div>
 		<!--element which is going to render the TextBox-->
-		<input class="m-input" type="file" placeholder="Your Message Here"/>
-  </div>
+		<input class="m-input" type="file" v-model="iFile" placeholder="Your Message Here"/>
+		<p> FileName: {{iFile}} </p>
+	</div>
 </template>
 
 <script>
 	export default {
     data(){
       return{
+        iFile: ''
       }
     }
   }
