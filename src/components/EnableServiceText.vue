@@ -12,19 +12,40 @@
     data(){
       return{
         heading: "Enable Service",
-        checkedNames:[],
+        checkedNames:[false, false],
       }
     },
     methods : {
       urlChecked : function(value) {
         this.checkedNames[0] = !this.checkedNames[0];
-        this.checkedNames.push();
-        this.heading = "url";
+        if(this.checkedNames[0] && this.checkedNames[1]){
+          this.heading = "both";
+        }
+        else if(this.checkedNames[0]){
+          this.heading = "url";
+        }
+        else if(this.checkedNames[1]){
+          this.heading = "sms";
+        }
+        else if (!this.checkedNames[0] && !this.checkedNames[1]){
+          this.heading = "none";
+        }
+        
       },
       smsChecked : function(value) {
         this.checkedNames[1] = !this.checkedNames[1];
-        this.checkedNames.push();
-        this.heading = "sms";
+        if(this.checkedNames[0] && this.checkedNames[1]){
+          this.heading = "both";
+        }
+        else if(this.checkedNames[1]){
+          this.heading = "sms";
+        }
+        else if(this.checkedNames[0]){
+          this.heading = "url";
+        }
+        else if (!this.checkedNames[0] && !this.checkedNames[1]){
+          this.heading = "none";
+        }
       }
     },
     
