@@ -4,6 +4,7 @@
 	<label for="sms">SMS Saver</label>
 	<input type="checkbox" id="url" value="URL Shortening" v-model="checkedNames" @change="urlChecked($event)">
 	<label for="url">URL Shortening</label>
+	<h3> {{selected}} </h3>
 
 </template>
 
@@ -13,38 +14,39 @@
       return{
         heading: "Enable Service",
         checkedNames:[false, false],
+        selected: "Selected: none",
       }
     },
     methods : {
       urlChecked : function(value) {
         this.checkedNames[0] = !this.checkedNames[0];
         if(this.checkedNames[0] && this.checkedNames[1]){
-          this.heading = "both";
+          this.selected = "Selected: both";
         }
         else if(this.checkedNames[0]){
-          this.heading = "url";
+          this.selected = "Selected: url";
         }
         else if(this.checkedNames[1]){
-          this.heading = "sms";
+          this.selected = "Selected: sms";
         }
         else if (!this.checkedNames[0] && !this.checkedNames[1]){
-          this.heading = "none";
+          this.selected = "Selected: none";
         }
         
       },
       smsChecked : function(value) {
         this.checkedNames[1] = !this.checkedNames[1];
         if(this.checkedNames[0] && this.checkedNames[1]){
-          this.heading = "both";
+          this.selected = "Selected: both";
         }
         else if(this.checkedNames[1]){
-          this.heading = "sms";
+          this.selected = "Selected: sms";
         }
         else if(this.checkedNames[0]){
-          this.heading = "url";
+          this.selected = "Selected: url";
         }
         else if (!this.checkedNames[0] && !this.checkedNames[1]){
-          this.heading = "none";
+          this.selected = "Selected: none";
         }
       }
     },
