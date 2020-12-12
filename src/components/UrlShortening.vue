@@ -4,7 +4,7 @@
 		<input type="text" v-model="urlInput" required/>
 		<span class="e-float-line"></span>
 		<label class="e-float-text"> Enter the URL to be shortened </label>
-		<p> URL: {{urlInput}}</p>
+		<p> URL: shortenUrl({{urlInput}})</p>
 	</div>
 </template>
 
@@ -12,9 +12,19 @@
 	export default {
     data(){
       return{
-        urlInput:''
+        urlInput:'',
+        shortUrl:'',
       }
+    },
+    methods : {
+      // shortenUrl : function(value) {
+      //   axios
+      //   .post('/api/url_shorten')
+      //   .then(response => (this.response = response.data.shortCode))
+      //   return
+      // }
     }
+    
   }
 </script>
 <style>

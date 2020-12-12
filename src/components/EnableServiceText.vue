@@ -7,9 +7,13 @@
 	<h3> Selected: {{selected}} </h3>
 	<div v-if=selected==="url">
 		<url-shortening></url-shortening>
-		</v-if>
 	</div>
-
+	<div v-else-if=selected==="both">
+		<url-shortening></url-shortening>
+	</div>
+	<div v-else-if=selected==="sms">
+		<!-- <sms-saver></sms-saver> -->
+	</div>
 </template>
 
 <script>
