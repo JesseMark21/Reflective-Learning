@@ -4,8 +4,9 @@
 		<input type="text" v-model="urlInput" required/>
 		<span class="e-float-line"></span>
 		<label class="e-float-text"> Enter the URL to be shortened </label>
-		<p> URL: shortenUrl({{urlInput}})</p>
+		<p> URL: {{shortUrl}}</p>
 	</div>
+	<div><button v-on:click="shortenUrl">Confirm</button></div>
 </template>
 
 <script>
@@ -17,6 +18,9 @@
       }
     },
     methods : {
+      shortenUrl(){
+        this.shortUrl = "shortenUrl"+"("+this.urlInput+")";
+      },
       // shortenUrl : function(value) {
       //   axios
       //   .post('/api/url_shorten')
@@ -27,7 +31,7 @@
     
   }
 </script>
-<style>
+<style scoped>
 	e-float-input e-input-group {
 		padding-top: 0px;
 	}
@@ -35,5 +39,14 @@
 	h2 {
 		color: #000000;
 		text-align: left;
+	}
+
+	.button {
+		border: true;
+		border-radius: 1px;
+	}
+
+	.button-close {
+		background-color: light-grey;
 	}
 </style>
