@@ -6,7 +6,7 @@
 		<label class="e-float-text"> Enter the URL to be shortened </label>
 		<p> URL: {{shortUrl}}</p>
 	</div>
-	<div><button v-on:click="shortenUrl">Confirm</button></div>
+	<div><button v-on:click="shortenUrl(urlInput)">Confirm</button></div>
 </template>
 
 <script>
@@ -18,15 +18,30 @@
       }
     },
     methods : {
-      shortenUrl(){
-        this.shortUrl = "shortenUrl"+"("+this.urlInput+")";
-      },
-      // shortenUrl : function(value) {
-      //   axios
-      //   .post('/api/url_shorten')
-      //   .then(response => (this.response = response.data.shortCode))
-      //   return
-      // }
+      // shortenUrl(){
+      //   this.shortUrl = "shortenUrl"+"("+this.urlInput+")";
+      // },
+      shortenUrl : function(value) {
+        var axios = require('axios');
+        var data = JSON.stringify({"longUrl" : value});
+
+        var config = {
+          method: 'post',
+          url: 'http://us.test15.vine.co.za/api/url_shorten',
+          headers: { 
+            'Content-Type': 'application/json'
+          },
+          data : data
+        };
+
+        axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
     }
     
   }
