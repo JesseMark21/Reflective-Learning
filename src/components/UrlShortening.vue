@@ -10,6 +10,7 @@
 </template>
 
 <script>
+	import axios from 'axios'
 	export default {
     data(){
       return{
@@ -24,7 +25,6 @@
       shortenUrl : function(value) {
         var axios = require('axios');
         var data = JSON.stringify({"longUrl" : value});
-
         var config = {
           method: 'post',
           url: 'http://us.test15.vine.co.za/api/url_shorten',
