@@ -1,6 +1,6 @@
 <template>
 	<footer>
-		<p> {{copyright}} <p>
+		<p> {{copyright}} </p>
 	</footer>
 </template>
 
@@ -8,7 +8,7 @@
 	export default {
     data(){
       return{
-        copyright: 'Copyright 2020 Grapevine'
+        copyright: 'Copyright 2020 Reflective Learning'
       }
     }
   }

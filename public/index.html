@@ -1,17 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Vue App</title>
-  </head>
-  <body>
-    
-    <noscript>
-      <strong>We're sorry but Vue App doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<!doctype html>
+<html lang="en" data-framework="backbonejs">
+	<head>
+		<meta charset="utf-8">
+		<title>Meme App</title>
+		<link rel="stylesheet" href="assets/base.css">
+		<link rel="stylesheet" href="assets/index.css">
+		<script src="https://unpkg.com/vue"></script>
+		<link rel="stylesheet" href="../node-modules/vue-images/dist/vue-images.css" charset="utf-8">
+		<script src="../node-modules/vue-images/dist/vue-images.js"></script>
+	</head>
+	<body>
+		<section class="memeapp">
+			<header class="header">
+				<h1>My favourite memes</h1>
+				<p>Select a File to Load:</p>
+				<input id="inputFileToLoad" type="file" onchange="loadImageFileAsURL();" />
+				
+			
+				<p>File Contents as DataURL:</p>
+				<textarea id="textAreaFileContents" style="width:640;height:240" ></textarea>
+ 
+				
+				<h3>Upload Meme</h2>
+				<input class="new-meme" id="inputFile" style="width: 300px;"
+				  v-model="newMemeImage"
+				placeholder="Paste generated DataURL here" autofocus>
+
+				<input class="new-meme"
+				  v-model="newMeme"
+				placeholder="Enter meme title" autofocus>
+
+				<input class="new-meme"
+				  v-model="newMemeReason" style="width:300px"
+				placeholder="Reason why the meme is funny" autofocus>
+				
+				<button v-on:click="addMeme(newMemeImage)">Upload Meme</button>
+			</header>
+			<script type="text/javascript">
+ 
+				function loadImageFileAsURL()
+				{
+					var filesSelected = document.getElementById("inputFileToLoad").files;
+					if (filesSelected.length > 0)
+					{
+						var fileToLoad = filesSelected[0];
+				 
+						var fileReader = new FileReader();
+				 
+						fileReader.onload = function(fileLoadedEvent) 
+						{
+							var textAreaFileContents = document.getElementById
+							(
+								"textAreaFileContents"
+							);
+					 
+							textAreaFileContents.innerHTML = fileLoadedEvent.target.result;
+						};
+				 
+						fileReader.readAsDataURL(fileToLoad);
+					}
+				}
+				 
+				</script>
+			<section class="main">
+				<ul class="meme-list">
+					<h1> Meme Information</h1>
+					<li v-for="meme in filteredMemes"
+						>
+						<div class="view">
+							
+								<label @dblclick="editMeme(meme)">Title: {{ meme.title }}, Description: {{ meme.reason }}</label>
+								<div>
+									<button class="destroy" @click="removeMeme(meme, meme.id)"> Delete Meme</button>
+								</div>
+								<!-- <v-img v-bind:src="getSrc(meme)"></v-img>
+								<vue-images :imgs="images"></vue-images> -->
+								
+						</div>
+						<div><p>Type here to change title</p>
+							<input class="edit" type="text"
+								v-model="meme.title"
+								@blur="doneEdit(meme)"
+								@keyup.enter="doneEdit(meme)" /> <p>Type here to change description</p>
+								<input class="edit" type="text"
+								v-model="meme.reason"
+								@blur="doneEdit(meme)"
+								@keyup.enter="doneEdit(meme)" /></div>
+							
+							<p></p>
+							
+					</li>
+					<h1> Saved Memes </h1>
+
+					<v-row v-for="img in memeSrc">
+						<h2> {{ img.title }} </h2>
+						<img :src="img.source" width="200px" />
+						<figcaption>{{ img.description }} </figcaption>
+					</v-row>
+					
+					
+				</ul>
+			</section>
+			
+		</section>
+
+		<script src="main.js"></script>
+	</body>
+
+	<style>
+		h1{
+			font-family: Lato, sans-serif;
+		}
+		h2{
+			font-family: Lato, sans-serif;
+		}
+		li{
+			font-family: Lato, sans-serif;
+		}
+		img{
+			padding-right:20px;
+		}
+		figcaption{
+			font-family: Lato, sans-serif;
+		}
+	</style>
+
 </html>

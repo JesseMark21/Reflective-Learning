@@ -1,4 +1,4 @@
 const { createApp } = require("vue");
-import MessageBroadcast from "./MessageBroadcast.vue";
+import App from "./App.vue";
 
-createApp(MessageBroadcast).mount("#app");
+createApp(App).mount("#app");

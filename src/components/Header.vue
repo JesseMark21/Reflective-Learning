@@ -8,7 +8,7 @@
 	export default {
     data(){
       return{
-        title: 'Message Broadcast Portal'
+        title: 'My Favourite Memes'
 
       }
     }
@@ -16,12 +16,13 @@
 </script>
 <style>
 	header {
-		background: #542989;
+		font-family: Lato, sans-serif;
+		background: #b5b5b5;
 		padding: 10px;
 	}
 
 	h1 {
-		color: #cdcdcd;
+		color: #000000;
 		text-align: left;
 	}
 </style>
